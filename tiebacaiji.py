@@ -10,6 +10,7 @@ headers={
 url=raw_input('url:')
 request=urllib2.Request(url,headers=headers)
 data=urllib2.urlopen(request).read()
+authorname=re.findall(r'<a data-field=.*?alog-group="p_author".*?href=".*?" target="_blank">(.*?)</a>',data)
 picurl=re.findall(r'<img class="BDE_Image" src="(.*?)" pic_ext="jpeg"',data)
 i=0
 for x in picurl:
@@ -20,4 +21,3 @@ for x in picurl:
 	file.close()
 	i=i+1
 print 'finished!'
-	
